@@ -1,0 +1,46 @@
+# Publishes this n8n community node package to npm with a provenance statement on every
+# version tag push (e.g. 0.1.1). n8n requires GitHub Actions publishing with provenance for
+# verified community nodes since 2026-05-01. Based on n8n-io/n8n-nodes-starter.
+#
+# Authentication: npm Trusted Publishing (OIDC). Configure once on npmjs.com:
+#   package settings > Trusted Publisher > GitHub Actions,
+#   owner lineagersiui-boop, repository n8n-nodes-sitemap-url-health-check, workflow publish.yml.
+# Leave the NPM_TOKEN secret unset; it is only an optional fallback.
+name: Publish
+
+on:
+  push:
+    tags:
+      - '*.*.*'
+
+jobs:
+  publish:
+    name: Publish to npm
+    runs-on: ubuntu-latest
+
+    permissions:
+      id-token: write
+      contents: read
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 'lts/*'
+          cache: 'npm'
+
+      - name: Update npm (Trusted Publishing needs npm 11.5.1 or newer)
+        run: npm install -g npm@latest
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Release
+        # n8n-node release runs lint and build, then npm publish with NPM_CONFIG_PROVENANCE=true.
+        run: |
+          [ -n "$NPM_TOKEN" ] && npm config set //registry.npmjs.org/:_authToken "$NPM_TOKEN"
+          npm run release
+        env:
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
