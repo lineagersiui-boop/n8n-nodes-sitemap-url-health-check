@@ -1,0 +1,8 @@
+[
+  {"url":"https://example.com/","status":200,"finalUrl":"https://example.com/","redirects":0,"redirectStatuses":[],"flags":["ok"],"lastmod":"2026-10-01","sitemap":"https://example.com/sitemap.xml"},
+  {"url":"https://example.com/old-page","status":404,"finalUrl":"https://example.com/old-page","redirects":0,"redirectStatuses":[],"flags":["not_found"],"lastmod":null,"sitemap":"https://example.com/sitemap.xml"},
+  {"url":"https://example.com/blog|pipe","status":200,"finalUrl":"https://www.example.com/blog","redirects":2,"redirectStatuses":[301,301],"flags":["redirected","redirect_chain"],"lastmod":"2026-09-12","sitemap":"https://example.com/sitemap.xml"},
+  {"url":"https://example.com/api-down","status":503,"finalUrl":"https://example.com/api-down","redirects":0,"redirectStatuses":[],"flags":["server_error"],"lastmod":null,"sitemap":"https://example.com/sitemap.xml"},
+  {"url":"https://example.com/slow","status":null,"finalUrl":null,"redirects":0,"redirectStatuses":[],"flags":["timeout"],"lastmod":null,"sitemap":"https://example.com/sitemap.xml"},
+  {"url":"https://example.com/private","status":200,"finalUrl":"https://example.com/private","redirects":0,"redirectStatuses":[],"flags":["noindex_header"],"lastmod":null,"sitemap":"https://example.com/sitemap.xml"}
+]
