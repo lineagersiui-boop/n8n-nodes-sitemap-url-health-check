@@ -1,0 +1,60 @@
+{
+	"name": "n8n-nodes-sitemap-url-health-check",
+	"version": "0.1.0",
+	"description": "n8n node: check every URL in a sitemap for 404s, server errors, redirect chains and noindex headers via the Apify Actor lineagersiui/sitemap-url-health-checker",
+	"license": "MIT",
+	"homepage": "https://github.com/lineagersiui-boop/n8n-nodes-sitemap-url-health-check#readme",
+	"keywords": [
+		"n8n-community-node-package",
+		"n8n",
+		"sitemap",
+		"broken-links",
+		"404",
+		"redirects",
+		"noindex",
+		"technical-seo",
+		"apify"
+	],
+	"author": {
+		"name": "lineagersiui-boop",
+		"email": "347185268+lineagersiui-boop@users.noreply.github.com",
+		"url": "https://github.com/lineagersiui-boop"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/lineagersiui-boop/n8n-nodes-sitemap-url-health-check.git"
+	},
+	"scripts": {
+		"build": "n8n-node build",
+		"build:watch": "tsc --watch",
+		"dev": "n8n-node dev",
+		"lint": "n8n-node lint",
+		"lint:fix": "n8n-node lint --fix",
+		"release": "n8n-node release",
+		"prepublishOnly": "n8n-node prerelease",
+		"test": "node --test test/"
+	},
+	"files": [
+		"dist"
+	],
+	"n8n": {
+		"n8nNodesApiVersion": 1,
+		"strict": true,
+		"credentials": [
+			"dist/credentials/ApifySitemapHealthApi.credentials.js"
+		],
+		"nodes": [
+			"dist/nodes/SitemapUrlHealthCheck/SitemapUrlHealthCheck.node.js"
+		]
+	},
+	"devDependencies": {
+		"@n8n/node-cli": "^0.54.5",
+		"eslint": "9.39.4",
+		"prettier": "3.8.3",
+		"release-it": "20.2.0",
+		"typescript": "5.9.3"
+	},
+	"peerDependencies": {
+		"n8n-workflow": "*"
+	}
+}
